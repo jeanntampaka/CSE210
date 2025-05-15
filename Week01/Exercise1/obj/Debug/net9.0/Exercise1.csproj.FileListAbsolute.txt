@@ -1,0 +1,21 @@
+G:\My Drive\BYU PathwayConnect\CSE210\WEEK01\Exercise1\obj\Debug\net9.0\Exercise1.GeneratedMSBuildEditorConfig.editorconfig
+G:\My Drive\BYU PathwayConnect\CSE210\WEEK01\Exercise1\obj\Debug\net9.0\Exercise1.AssemblyInfoInputs.cache
+G:\My Drive\BYU PathwayConnect\CSE210\WEEK01\Exercise1\obj\Debug\net9.0\Exercise1.AssemblyInfo.cs
+G:\My Drive\BYU PathwayConnect\CSE210\WEEK01\Exercise1\obj\Debug\net9.0\Exercise1.csproj.CoreCompileInputs.cache
+G:\My Drive\BYU PathwayConnect\CSE210\WEEK01\Exercise1\obj\Debug\net9.0\Exercise1.dll
+G:\My Drive\BYU PathwayConnect\CSE210\WEEK01\Exercise1\obj\Debug\net9.0\refint\Exercise1.dll
+G:\My Drive\BYU PathwayConnect\CSE210\WEEK01\Exercise1\obj\Debug\net9.0\Exercise1.pdb
+C:\CSE210\Week01\Exercise1\bin\Debug\net9.0\Exercise1.exe
+C:\CSE210\Week01\Exercise1\bin\Debug\net9.0\Exercise1.deps.json
+C:\CSE210\Week01\Exercise1\bin\Debug\net9.0\Exercise1.runtimeconfig.json
+C:\CSE210\Week01\Exercise1\bin\Debug\net9.0\Exercise1.dll
+C:\CSE210\Week01\Exercise1\bin\Debug\net9.0\Exercise1.pdb
+C:\CSE210\Week01\Exercise1\obj\Debug\net9.0\Exercise1.GeneratedMSBuildEditorConfig.editorconfig
+C:\CSE210\Week01\Exercise1\obj\Debug\net9.0\Exercise1.AssemblyInfoInputs.cache
+C:\CSE210\Week01\Exercise1\obj\Debug\net9.0\Exercise1.AssemblyInfo.cs
+C:\CSE210\Week01\Exercise1\obj\Debug\net9.0\Exercise1.csproj.CoreCompileInputs.cache
+C:\CSE210\Week01\Exercise1\obj\Debug\net9.0\Exercise1.dll
+C:\CSE210\Week01\Exercise1\obj\Debug\net9.0\refint\Exercise1.dll
+C:\CSE210\Week01\Exercise1\obj\Debug\net9.0\Exercise1.pdb
+C:\CSE210\Week01\Exercise1\obj\Debug\net9.0\Exercise1.genruntimeconfig.cache
+C:\CSE210\Week01\Exercise1\obj\Debug\net9.0\ref\Exercise1.dll
