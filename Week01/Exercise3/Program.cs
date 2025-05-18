@@ -1,45 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 
 class Program
 {
-    // Function to ask for a name and return a formatted full name
-    static string GetFullName()
+    static void Main(string[] args)
     {
-        Console.Write("Enter First Name: ");
-        string firstName = Console.ReadLine();
-
-        Console.Write("Enter Last Name: ");
-        string lastName = Console.ReadLine();
-
-        return $"{firstName} {lastName}";
-    }
-
-    static void Main()
-    {
-        List<string> fullNames = new List<string>();
-        string choice;
+        string playAgain;
 
         do
         {
-            string fullName = GetFullName();
+            // Generate a random number each time the game starts
+            Random randomGenerator = new Random();
+            int magicNumber = randomGenerator.Next(1, 101);
 
-            // Condition: only add if both names are not empty
-            if (!string.IsNullOrWhiteSpace(fullName))
+            int guess;
+            int guessCount = 0;
+
+            do
             {
-                fullNames.Add(fullName);
-            }
+                Console.Write("What is your guess? ");
+                guess = int.Parse(Console.ReadLine());
+                guessCount++;
 
-            Console.Write("Do you want to enter another name? (yes/no): ");
-            choice = Console.ReadLine().ToLower();
+                if (guess < magicNumber)
+                {
+                    Console.WriteLine("Higher");
+                }
+                else if (guess > magicNumber)
+                {
+                    Console.WriteLine("Lower");
+                }
+                else
+                {
+                    Console.WriteLine("You guessed it!");
+                    Console.WriteLine($"It took you {guessCount} guesses.");
+                }
 
-        } while (choice == "yes");
+            } while (guess != magicNumber);
 
-        Console.WriteLine("\nCollected Names:");
-        foreach (string name in fullNames)
-        {
-            Console.WriteLine(name);
-        }
+            Console.Write("Would you like to play again? (yes/no): ");
+            playAgain = Console.ReadLine().ToLower();
+
+        } while (playAgain == "yes");
     }
 }
-
+// This is the end of the program code
