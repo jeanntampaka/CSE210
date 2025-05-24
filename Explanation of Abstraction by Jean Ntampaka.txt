@@ -1,0 +1,21 @@
+Abstraction is a core principle of object-oriented programming that involves simplifying complex systems by modeling classes appropriate to the problem, while hiding unnecessary details from the user. It allows developers to expose only the relevant parts of an object’s behavior while keeping internal implementation details private or encapsulated.
+
+One of the biggest benefits of abstraction is that it reduces complexity. By abstracting details, we can write more maintainable and flexible code. Changes to how something works internally do not affect the external code that uses it—this leads to better modularity and code reuse.
+
+In my JournalProgram project, abstraction was applied by using a Journal class to handle journal-related tasks (like adding, displaying, saving, and loading entries), and an Entry class to represent a single journal entry. These classes encapsulate their data and expose methods to interact with that data without revealing how it's stored or managed internally.
+
+Here’s an example of abstraction from my program:
+
+// In Program.cs
+journal.AddEntry(entry);
+
+// In Journal.cs
+public void AddEntry(Entry entry)
+{
+    _entries.Add(entry);
+}
+
+In this code, the main program interacts with the Journal object through its AddEntry() method, without needing to know how the entries are stored (i.e., inside a _entries list). This abstraction makes the code cleaner and allows future changes—like switching the storage structure from a list to a database—without altering the code that uses AddEntry().
+
+By separating concerns through abstraction, the program becomes easier to understand, modify, and scale. Each class focuses solely on its responsibility, which is a hallmark of good software design.
+
