@@ -1,0 +1,379 @@
+YOUTUBE VIDEOS PROGRAM DESIGN
+
+1. What does the program do?
+----------------------------
+This program models YouTube videos and their associated comments.
+It creates multiple video objects, adds several comments to each video,
+and displays the video's details including title, author, length,
+number of comments, and all associated comment content.
+
+2. Candidates for Classes:
+--------------------------
+- Video
+- Comment
+
+3. Responsibilities of Each Class:
+----------------------------------
+
+Video Class:
+------------
+Attributes:
+- title: The title of the video.
+- author: The person/channel who created the video.
+- lengthInSeconds: The length of the video in seconds.
+- comments: A list of Comment objects.
+
+Responsibilities:
+- Stores information about a video.
+- Maintains a list of comments.
+- Returns the number of comments.
+- Adds comments to the list.
+
+Comment Class:
+--------------
+Attributes:
+- commenterName: Name of the person who made the comment.
+- text: Content of the comment.
+
+Responsibilities:
+- Stores data for individual comments.
+
+PROGRAM'S CODE
+--------------
+using System;
+using System.Collections.Generic;
+
+namespace YouTubeVideos
+{
+    // Comment class
+    public class Comment
+    {
+        public string CommenterName { get; set; }
+        public string Text { get; set; }
+
+        public Comment(string commenterName, string text)
+        {
+            CommenterName = commenterName;
+            Text = text;
+        }
+    }
+
+    // Video class
+    public class Video
+    {
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public int LengthInSeconds { get; set; }
+        private List<Comment> Comments { get; set; }
+
+        public Video(string title, string author, int lengthInSeconds)
+        {
+            Title = title;
+            Author = author;
+            LengthInSeconds = lengthInSeconds;
+            Comments = new List<Comment>();
+        }
+
+        public void AddComment(Comment comment)
+        {
+            Comments.Add(comment);
+        }
+
+        public int GetNumberOfComments()
+        {
+            return Comments.Count;
+        }
+
+        public List<Comment> GetComments()
+        {
+            return Comments;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create videos
+            Video video1 = new Video("C# Tutorial", "Alice", 600);
+            Video video2 = new Video("Learn JavaScript", "Bob", 1200);
+            Video video3 = new Video("Python Basics", "Carol", 900);
+
+            // Add comments to video1
+            video1.AddComment(new Comment("John", "Great tutorial!"));
+            video1.AddComment(new Comment("Sally", "Very helpful, thanks."));
+            video1.AddComment(new Comment("Mike", "Could you explain LINQ more?"));
+
+            // Add comments to video2
+            video2.AddComment(new Comment("Anna", "I love this JavaScript series."));
+            video2.AddComment(new Comment("Tom", "Nice explanations."));
+            video2.AddComment(new Comment("Rachel", "Can you cover async functions?"));
+
+            // Add comments to video3
+            video3.AddComment(new Comment("George", "Python is awesome!"));
+            video3.AddComment(new Comment("Emma", "Thanks for breaking it down."));
+            video3.AddComment(new Comment("Sophia", "Clear and concise."));
+
+            // Store videos in a list
+            List<Video> videos = new List<Video> { video1, video2, video3 };
+
+            // Display information
+            foreach (var video in videos)
+            {
+                Console.WriteLine($"Title: {video.Title}");
+                Console.WriteLine($"Author: {video.Author}");
+                Console.WriteLine($"Length (seconds): {video.LengthInSeconds}");
+                Console.WriteLine($"Number of comments: {video.GetNumberOfComments()}");
+                Console.WriteLine("Comments:");
+                foreach (var comment in video.GetComments())
+                {
+                    Console.WriteLine($"  - {comment.CommenterName}: {comment.Text}");
+                }
+                Console.WriteLine(new string('-', 40));
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+ONLINE ORDERING PROGRAM DESIGN
+
+1. What does the program do?
+----------------------------
+This program simulates an online product ordering system.
+It creates customer orders with multiple products, calculates the
+total price including shipping costs, and generates packing and
+shipping labels for the order.
+
+2. Candidates for Classes:
+--------------------------
+- Order
+- Product
+- Customer
+- Address
+
+3. Responsibilities of Each Class:
+----------------------------------
+
+Order Class:
+------------
+Attributes:
+- products: A list of Product objects.
+- customer: A Customer object.
+
+Responsibilities:
+- Adds products to the order.
+- Calculates the total cost (products + shipping).
+- Generates a packing label with product name and ID.
+- Generates a shipping label with the customer's address.
+
+Product Class:
+--------------
+Attributes:
+- name: Name of the product.
+- productId: Unique ID of the product.
+- price: Price per unit.
+- quantity: Number of units.
+
+Responsibilities:
+- Calculates total cost (price * quantity).
+
+Customer Class:
+---------------
+Attributes:
+- name: Customer's name.
+- address: An Address object.
+
+Responsibilities:
+- Determines if the customer lives in the USA (calls address method).
+- Provides shipping information.
+
+Address Class:
+--------------
+Attributes:
+- street: Street address.
+- city: City name.
+- stateOrProvince: State or province.
+- country: Country name.
+
+Responsibilities:
+- Determines if the address is in the USA.
+- Returns the full formatted address as a string.
+
+PROGRAM'S CODE
+--------------
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace OnlineOrdering
+{
+    public class Product
+    {
+        private string _name;
+        private string _productId;
+        private double _price;
+        private int _quantity;
+
+        public Product(string name, string productId, double price, int quantity)
+        {
+            _name = name;
+            _productId = productId;
+            _price = price;
+            _quantity = quantity;
+        }
+
+        public string Name { get => _name; }
+        public string ProductId { get => _productId; }
+        public double Price { get => _price; }
+        public int Quantity { get => _quantity; }
+
+        public double GetTotalCost()
+        {
+            return _price * _quantity;
+        }
+    }
+
+    public class Address
+    {
+        private string _street;
+        private string _city;
+        private string _stateOrProvince;
+        private string _country;
+
+        public Address(string street, string city, string stateOrProvince, string country)
+        {
+            _street = street;
+            _city = city;
+            _stateOrProvince = stateOrProvince;
+            _country = country;
+        }
+
+        public bool IsInUSA()
+        {
+            return _country.Trim().ToUpper() == "USA";
+        }
+
+        public string GetFullAddress()
+        {
+            return $"{_street}\n{_city}, {_stateOrProvince}\n{_country}";
+        }
+    }
+
+    public class Customer
+    {
+        private string _name;
+        private Address _address;
+
+        public Customer(string name, Address address)
+        {
+            _name = name;
+            _address = address;
+        }
+
+        public string Name { get => _name; }
+        public Address Address { get => _address; }
+
+        public bool IsInUSA()
+        {
+            return _address.IsInUSA();
+        }
+    }
+
+    public class Order
+    {
+        private List<Product> _products;
+        private Customer _customer;
+
+        public Order(Customer customer)
+        {
+            _customer = customer;
+            _products = new List<Product>();
+        }
+
+        public void AddProduct(Product product)
+        {
+            _products.Add(product);
+        }
+
+        public double CalculateTotalPrice()
+        {
+            double total = 0;
+            foreach (Product p in _products)
+            {
+                total += p.GetTotalCost();
+            }
+            // Shipping cost
+            total += _customer.IsInUSA() ? 5 : 35;
+            return total;
+        }
+
+        public string GetPackingLabel()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (Product p in _products)
+            {
+                sb.AppendLine($"Product Name: {p.Name}, Product ID: {p.ProductId}");
+            }
+            return sb.ToString();
+        }
+
+        public string GetShippingLabel()
+        {
+            return $"{_customer.Name}\n{_customer.Address.GetFullAddress()}";
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create Addresses
+            Address address1 = new Address("123 Elm St", "Springfield", "IL", "USA");
+            Address address2 = new Address("456 Maple Ave", "Toronto", "ON", "Canada");
+
+            // Create Customers
+            Customer customer1 = new Customer("John Doe", address1);
+            Customer customer2 = new Customer("Jane Smith", address2);
+
+            // Create Products for order 1
+            Product prod1 = new Product("Laptop", "A123", 999.99, 1);
+            Product prod2 = new Product("Mouse", "B456", 25.50, 2);
+
+            // Create Products for order 2
+            Product prod3 = new Product("Book", "C789", 15.00, 3);
+            Product prod4 = new Product("Pen", "D012", 1.50, 5);
+
+            // Create Orders
+            Order order1 = new Order(customer1);
+            order1.AddProduct(prod1);
+            order1.AddProduct(prod2);
+
+            Order order2 = new Order(customer2);
+            order2.AddProduct(prod3);
+            order2.AddProduct(prod4);
+
+            // Display order info
+            Console.WriteLine("Order 1:");
+            Console.WriteLine("Packing Label:");
+            Console.WriteLine(order1.GetPackingLabel());
+            Console.WriteLine("Shipping Label:");
+            Console.WriteLine(order1.GetShippingLabel());
+            Console.WriteLine($"Total Price: ${order1.CalculateTotalPrice():F2}");
+            Console.WriteLine(new string('-', 40));
+
+            Console.WriteLine("Order 2:");
+            Console.WriteLine("Packing Label:");
+            Console.WriteLine(order2.GetPackingLabel());
+            Console.WriteLine("Shipping Label:");
+            Console.WriteLine(order2.GetShippingLabel());
+            Console.WriteLine($"Total Price: ${order2.CalculateTotalPrice():F2}");
+        }
+    }
+}
